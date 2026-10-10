@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A-MART | Fashion for Everyone | Modern Indian Retail Shopping</title>
+  <meta name="description" content="A-MART - Fashion for Everyone. Shop the latest Men, Women, Kids, Ethnic, Western Wear, Footwear & Accessories at unbeatable prices. Easy WhatsApp Ordering at +91 7355415447!">
+  
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Free Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announcement-bar" aria-label="Store Announcements">
+    <div class="container">
+      <div class="announcement-text">
+        <span class="announcement-badge"><i class="fa-solid fa-fire"></i> MEGA SALE</span>
+        <span>Great Indian Fashion Sale! Flat 50% - 70% Off | Free Delivery on orders over ₹999</span>
+      </div>
+      <div class="announcement-links">
+        <a href="#catalog" onclick="filterByCategory('sale')"><i class="fa-solid fa-tag"></i> Use Code: <strong>AMART100</strong></a>
+        <a href="https://wa.me/917355415447?text=Hi%20A-Mart%2C%20I%20have%20an%20order%20query." target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp Help: <strong>7355415447</strong></a>
+        <a href="javascript:void(0)" onclick="openPolicyModal('track')"><i class="fa-solid fa-truck-fast"></i> Track Order</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="header-inner">
+        
+        <!-- Mobile Hamburger Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- A-MART Brand Logo -->
+        <a href="index.html" class="brand-logo" aria-label="A-Mart Homepage">
+          <div class="logo-icon-box">A</div>
+          <div class="logo-text-group">
+            <span class="logo-title">A-<span>MART</span></span>
+            <span class="logo-tagline">Fashion for Everyone</span>
+          </div>
+        </a>
+
+        <!-- Live Search Bar -->
+        <div class="header-search-wrapper">
+          <div class="search-input-box">
+            <i class="fa-solid fa-magnifying-glass text-muted" style="color: #94a3b8; font-size: 0.95rem;"></i>
+            <input type="text" id="globalSearchInput" placeholder="Search for T-shirts, Kurtas, Jeans, Dresses..." autocomplete="off">
+            <button class="search-clear-btn" id="searchClearBtn" aria-label="Clear search">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+            <button class="search-submit-btn" id="searchSubmitBtn" aria-label="Search">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+          
+          <!-- Instant Autocomplete Dropdown -->
+          <div class="search-suggestions-dropdown" id="searchSuggestionsDropdown">
+            <!-- Injected by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Header Actions: Account, Wishlist, Cart -->
+        <div class="header-actions">
+          
+          <!-- User Account Button -->
+          <button class="header-action-btn" id="authBtn" onclick="openAuthModal()">
+            <div class="action-icon-wrap">
+              <i class="fa-regular fa-user"></i>
+            </div>
+            <span id="authBtnText" class="desktop-only">Sign In</span>
+          </button>
+
+          <!-- Wishlist Button -->
+          <button class="header-action-btn" id="wishlistHeaderBtn" onclick="openWishlistDrawer()" aria-label="Wishlist">
+            <div class="action-icon-wrap">
+              <i class="fa-regular fa-heart"></i>
+              <span class="badge-count" id="wishlistCount">0</span>
+            </div>
+            <span class="desktop-only">Wishlist</span>
+          </button>
+
+          <!-- Shopping Cart Button -->
+          <button class="header-action-btn header-cart-btn" id="cartHeaderBtn" onclick="openCartDrawer()" aria-label="Shopping Cart">
+            <div class="action-icon-wrap">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span class="badge-count" id="cartCount">0</span>
+            </div>
+            <span id="cartSubtotalHeader" class="desktop-only">₹0</span>
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- Mobile Search Field -->
+      <div class="mobile-search-bar-wrap" style="display: none; padding-bottom: 0.75rem;" id="mobileSearchWrap">
+        <div class="search-input-box">
+          <i class="fa-solid fa-magnifying-glass text-muted" style="color: #94a3b8;"></i>
+          <input type="text" id="mobileSearchInput" placeholder="Search for fashion...">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Menu Bar with all 15 Categories -->
+    <nav class="navigation-bar" aria-label="Category Navigation">
+      <div class="container">
+        <ul class="category-nav-list" id="categoryNavList">
+          <!-- Injected dynamically to reflect all 15 required categories -->
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Body -->
+  <main>
+    
+    <!-- Hero Banner Slider -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-slider-container" id="heroSlider">
+          <!-- Slide 1 -->
+          <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=80');">
+            <div class="hero-slide-overlay"></div>
+            <div class="hero-slide-content">
+              <span class="hero-tag"><i class="fa-solid fa-fire"></i> GREAT INDIAN FASHION SALE</span>
+              <h1 class="hero-title">Trendy Fashion for Everyone</h1>
+              <p class="hero-subtitle">Discover high quality Men, Women & Kids styles at India's most loved factory-direct value prices.</p>
+              <div class="hero-deal-highlight">
+                <i class="fa-solid fa-tag"></i> FLAT 50% - 70% OFF ON 10,000+ STYLES
+              </div>
+              <button class="hero-cta-btn" onclick="filterByCategory('sale')">
+                <span>Shop The Sale</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1400&q=80');">
+            <div class="hero-slide-overlay"></div>
+            <div class="hero-slide-content">
+              <span class="hero-tag" style="background: #c2410c;"><i class="fa-solid fa-gem"></i> FESTIVE & ETHNIC ZONE</span>
+              <h2 class="hero-title">Graceful Ethnic & Party Wear</h2>
+              <p class="hero-subtitle">Anarkali Kurtas, Traditional Silk Sarees, Peplum Sharara sets & Nehru Jackets crafted for celebrations.</p>
+              <div class="hero-deal-highlight" style="color: #fde047;">
+                <i class="fa-solid fa-sparkles"></i> STARTING AT JUST ₹399
+              </div>
+              <button class="hero-cta-btn" style="background: #c2410c;" onclick="filterByCategory('ethnic-wear')">
+                <span>Explore Ethnic Wear</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?auto=format&fit=crop&w=1400&q=80');">
+            <div class="hero-slide-overlay"></div>
+            <div class="hero-slide-content">
+              <span class="hero-tag" style="background: #1e3a8a;"><i class="fa-solid fa-bolt"></i> EVERYDAY VALUE STORE</span>
+              <h2 class="hero-title">Comfortable Casuals Under ₹499</h2>
+              <p class="hero-subtitle">100% Combed Cotton T-Shirts, Washed Denim Jeans, Chinos & Kids Daily Playwear.</p>
+              <div class="hero-deal-highlight" style="color: #60a5fa;">
+                <i class="fa-solid fa-certificate"></i> BEST PRICES GUARANTEED
+              </div>
+              <button class="hero-cta-btn" style="background: #1e3a8a;" onclick="filterByBudget(499)">
+                <span>Deals Under ₹499</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Navigation Controls -->
+          <button class="hero-nav-btn hero-prev" id="heroPrevBtn" aria-label="Previous Slide">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="hero-nav-btn hero-next" id="heroNextBtn" aria-label="Next Slide">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          
+          <!-- Slider Dots -->
+          <div class="hero-dots" id="heroDots">
+            <span class="hero-dot active" onclick="jumpToSlide(0)"></span>
+            <span class="hero-dot" onclick="jumpToSlide(1)"></span>
+            <span class="hero-dot" onclick="jumpToSlide(2)"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust & Retail Value Props Strip -->
+    <section class="container">
+      <div class="trust-strip">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <div class="trust-icon-box">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <div>
+              <div class="trust-title">Free Home Delivery</div>
+              <div class="trust-desc">On all orders above ₹999</div>
+            </div>
+          </div>
+
+          <div class="trust-item whatsapp-trust">
+            <div class="trust-icon-box">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div>
+              <div class="trust-title">Fast WhatsApp Ordering</div>
+              <div class="trust-desc">Order direct to 7355415447</div>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon-box">
+              <i class="fa-solid fa-rotate-left"></i>
+            </div>
+            <div>
+              <div class="trust-title">Easy 7-Day Exchange</div>
+              <div class="trust-desc">Hassle-free size replacement</div>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon-box">
+              <i class="fa-solid fa-indian-rupee-sign"></i>
+            </div>
+            <div>
+              <div class="trust-title">Cash on Delivery (COD)</div>
+              <div class="trust-desc">Pay when package arrives</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Category Circles -->
+    <section class="category-circles-section">
+      <div class="container">
+        <div class="section-header-compact">
+          <div class="section-heading-wrap">
+            <h3 class="section-title">Shop by Category</h3>
+            <span class="section-subtitle">Explore curated trends</span>
+          </div>
+        </div>
+        
+        <div class="category-circles-scroll" id="categoryCirclesScroll">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Budget Bazaar Strips (Deals Under ₹299, ₹499, ₹699, ₹999) -->
+    <section class="budget-store-section">
+      <div class="container">
+        <div class="section-header-compact">
+          <div class="section-heading-wrap">
+            <h3 class="section-title">A-Mart Budget Bazaar</h3>
+            <span class="section-subtitle">Pocket-friendly retail shopping</span>
+          </div>
+          <a href="#catalog" onclick="filterByCategory('sale')" class="view-all-link" style="color: var(--primary-red); font-weight: 700;">View All Deals <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="budget-cards-grid">
+          <div class="budget-card" onclick="filterByBudget(299)">
+            <div class="budget-card-info">
+              <h4>Under ₹299</h4>
+              <p>T-Shirts & Daily Tees</p>
+            </div>
+            <div class="budget-card-icon">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+          </div>
+
+          <div class="budget-card" onclick="filterByBudget(499)">
+            <div class="budget-card-info">
+              <h4>Under ₹499</h4>
+              <p>Shirts, Kurtas & Flats</p>
+            </div>
+            <div class="budget-card-icon">
+              <i class="fa-solid fa-tags"></i>
+            </div>
+          </div>
+
+          <div class="budget-card" onclick="filterByBudget(699)">
+            <div class="budget-card-info">
+              <h4>Under ₹699</h4>
+              <p>Dresses, Denims & Chinos</p>
+            </div>
+            <div class="budget-card-icon">
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+
+          <div class="budget-card" onclick="filterByBudget(999)">
+            <div class="budget-card-info">
+              <h4>Under ₹999</h4>
+              <p>Suits, Sarees & Sneakers</p>
+            </div>
+            <div class="budget-card-icon">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Catalog & Product Listing Section -->
+    <section class="container" id="catalog">
+      
+      <!-- Section Tabs: Trending, New Arrivals, Best Sellers, Sale -->
+      <div class="featured-tabs-wrapper">
+        <button class="featured-tab-btn active" data-tab="all" onclick="switchSectionTab('all')">
+          <i class="fa-solid fa-border-all"></i> All Collections
+        </button>
+        <button class="featured-tab-btn" data-tab="trending" onclick="switchSectionTab('trending')">
+          <i class="fa-solid fa-arrow-trend-up"></i> Trending Products
+        </button>
+        <button class="featured-tab-btn" data-tab="new" onclick="switchSectionTab('new')">
+          <i class="fa-solid fa-sparkles"></i> New Arrivals
+        </button>
+        <button class="featured-tab-btn" data-tab="bestseller" onclick="switchSectionTab('bestseller')">
+          <i class="fa-solid fa-crown"></i> Best Sellers
+        </button>
+        <button class="featured-tab-btn" data-tab="sale" onclick="switchSectionTab('sale')">
+          <i class="fa-solid fa-fire text-danger"></i> Special Offers & Sale
+        </button>
+      </div>
+
+      <!-- Main Layout: Filters Sidebar + Products Grid -->
+      <div class="catalog-main-layout">
+        
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar" id="filtersSidebar">
+          <div class="filters-header">
+            <h3 class="filters-title"><i class="fa-solid fa-sliders"></i> Filters</h3>
+            <button class="clear-filters-btn" onclick="resetAllFilters()">Reset All</button>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="filter-group">
+            <div class="filter-group-title">Category</div>
+            <select class="form-select" id="sidebarCategorySelect" onchange="filterByCategory(this.value)">
+              <option value="all">All Categories</option>
+              <!-- Populated by JS -->
+            </select>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="filter-group">
+            <div class="filter-group-title">
+              <span>Price Range</span>
+              <span id="priceSliderVal" style="color: var(--primary-red); font-weight: 700;">₹3,000</span>
+            </div>
+            <div class="price-slider-box">
+              <input type="range" class="price-slider-input" id="priceRangeInput" min="200" max="3000" step="50" value="3000" oninput="updatePriceSlider(this.value)">
+              <div class="price-range-display">
+                <span>Min: ₹200</span>
+                <span>Max: ₹3,000</span>
+              </div>
+            </div>
+            
+            <!-- Quick Price Brackets -->
+            <div class="price-brackets-list">
+              <label class="price-bracket-option">
+                <input type="radio" name="priceBracket" value="all" checked onchange="filterByPriceBracket('all')">
+                <span>All Prices</span>
+              </label>
+              <label class="price-bracket-option">
+                <input type="radio" name="priceBracket" value="under-499" onchange="filterByPriceBracket('under-499')">
+                <span>Under ₹499</span>
+              </label>
+              <label class="price-bracket-option">
+                <input type="radio" name="priceBracket" value="500-999" onchange="filterByPriceBracket('500-999')">
+                <span>₹500 - ₹999</span>
+              </label>
+              <label class="price-bracket-option">
+                <input type="radio" name="priceBracket" value="1000-plus" onchange="filterByPriceBracket('1000-plus')">
+                <span>₹1,000 and Above</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Size Filter -->
+          <div class="filter-group">
+            <div class="filter-group-title">Size</div>
+            <div class="size-filter-grid" id="sizeFilterGrid">
+              <!-- Dynamically populated or rendered -->
+              <button class="size-pill" onclick="toggleSizeFilter('S')">S</button>
+              <button class="size-pill" onclick="toggleSizeFilter('M')">M</button>
+              <button class="size-pill" onclick="toggleSizeFilter('L')">L</button>
+              <button class="size-pill" onclick="toggleSizeFilter('XL')">XL</button>
+              <button class="size-pill" onclick="toggleSizeFilter('XXL')">XXL</button>
+              <button class="size-pill" onclick="toggleSizeFilter('30')">30</button>
+              <button class="size-pill" onclick="toggleSizeFilter('32')">32</button>
+              <button class="size-pill" onclick="toggleSizeFilter('34')">34</button>
+              <button class="size-pill" onclick="toggleSizeFilter('7')">7</button>
+              <button class="size-pill" onclick="toggleSizeFilter('8')">8</button>
+            </div>
+          </div>
+
+          <!-- Color Filter -->
+          <div class="filter-group">
+            <div class="filter-group-title">Color</div>
+            <div class="color-filter-grid" id="colorFilterGrid">
+              <button class="color-swatch-btn" style="background-color: #1e3a8a;" title="Navy Blue" onclick="toggleColorFilter('Blue')"></button>
+              <button class="color-swatch-btn" style="background-color: #dc2626;" title="Red" onclick="toggleColorFilter('Red')"></button>
+              <button class="color-swatch-btn" style="background-color: #15803d;" title="Green" onclick="toggleColorFilter('Green')"></button>
+              <button class="color-swatch-btn" style="background-color: #18181b;" title="Black" onclick="toggleColorFilter('Black')"></button>
+              <button class="color-swatch-btn" style="background-color: #f8fafc; border: 1px solid #cbd5e1;" title="White" onclick="toggleColorFilter('White')"></button>
+              <button class="color-swatch-btn" style="background-color: #eab308;" title="Yellow" onclick="toggleColorFilter('Yellow')"></button>
+              <button class="color-swatch-btn" style="background-color: #ec4899;" title="Pink" onclick="toggleColorFilter('Pink')"></button>
+              <button class="color-swatch-btn" style="background-color: #9a3412;" title="Tan / Brown" onclick="toggleColorFilter('Brown')"></button>
+            </div>
+          </div>
+
+          <!-- Special Tag Filter -->
+          <div class="filter-group">
+            <div class="filter-group-title">Special Offers</div>
+            <div class="price-brackets-list">
+              <label class="price-bracket-option">
+                <input type="checkbox" id="saleOnlyCheckbox" onchange="toggleSaleOnly(this.checked)">
+                <span>On Sale Only (Discounted)</span>
+              </label>
+              <label class="price-bracket-option">
+                <input type="checkbox" id="bestsellerOnlyCheckbox" onchange="toggleBestsellerOnly(this.checked)">
+                <span>Best Sellers Only</span>
+              </label>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- Catalog Content Area -->
+        <div class="catalog-content-area">
+          
+          <!-- Catalog Toolbar -->
+          <div class="catalog-toolbar">
+            <button class="mobile-filter-trigger" onclick="toggleMobileFilters()">
+              <i class="fa-solid fa-filter"></i> Filters & Sort
+            </button>
+
+            <div class="results-count-text">
+              Showing <strong id="productCountNum">0</strong> fashion styles
+            </div>
+
+            <div class="catalog-sort-group">
+              <label for="catalogSortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort by:</label>
+              <select class="sort-select" id="catalogSortSelect" onchange="changeCatalogSort(this.value)">
+                <option value="featured">Featured & Popular</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Customer Rating</option>
+                <option value="discount">Biggest Discount %</option>
+                <option value="newest">Newest Arrivals</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Active Filter Chips Bar -->
+          <div class="active-filters-chips-bar" id="activeFilterChipsBar">
+            <!-- Injected by JS -->
+          </div>
+
+          <!-- Dynamic Products Grid -->
+          <div class="products-grid" id="productsGrid">
+            <!-- Product Cards generated by JavaScript -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-catalog-state" id="emptyCatalogState" style="display: none;">
+            <div class="empty-state-icon">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <h3 class="empty-state-title">No Products Found</h3>
+            <p class="empty-state-text">We couldn't find any items matching your selected filters. Try clearing your filters or searching for something else.</p>
+            <button class="hero-cta-btn" onclick="resetAllFilters()">Reset All Filters</button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WhatsApp Ordering Highlight Banner (CRITICAL FEATURE) -->
+    <section class="container">
+      <div class="whatsapp-highlight-banner">
+        <div class="wa-banner-flex">
+          <div class="wa-banner-content">
+            <span class="wa-tag"><i class="fa-brands fa-whatsapp"></i> DIRECT WHATSAPP SHOPPING SYSTEM</span>
+            <h2 class="wa-banner-title">Fast, Transparent Orders via WhatsApp</h2>
+            <p class="wa-banner-desc">No complicated checkout apps or hidden charges. Simply pick your favorites, click <strong>Buy Now</strong>, and send your order directly to our official retail WhatsApp helpline: <strong>+91 7355415447</strong>.</p>
+            
+            <div class="wa-features-list">
+              <div class="wa-feature-item"><i class="fa-solid fa-circle-check"></i> Instant stock confirmation</div>
+              <div class="wa-feature-item"><i class="fa-solid fa-circle-check"></i> Live size & fabric guidance</div>
+              <div class="wa-feature-item"><i class="fa-solid fa-circle-check"></i> Cash on Delivery available</div>
+              <div class="wa-feature-item"><i class="fa-solid fa-circle-check"></i> Real-time tracking updates</div>
+            </div>
+
+            <a href="https://wa.me/917355415447?text=Hello%20A-Mart!%20I%20want%20to%20inquire%20about%20your%20latest%20fashion%20collection." target="_blank" class="wa-order-now-btn">
+              <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
+              <span>Chat & Order on WhatsApp: 7355415447</span>
+            </a>
+          </div>
+          
+          <div class="wa-banner-card-preview desktop-only" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border-radius: var(--radius-lg); padding: 1.5rem; max-width: 340px; border: 1px solid rgba(255,255,255,0.25);">
+            <div style="font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-message"></i> Sample Order Format:
+            </div>
+            <div style="font-family: monospace; font-size: 0.78rem; background: rgba(0,0,0,0.25); padding: 0.85rem; border-radius: var(--radius-sm); line-height: 1.45;">
+              🛍️ *A-MART ORDER*<br>
+              • Name: Rahul Sharma<br>
+              • Items: Cotton Shirt (L), Jeans (32)<br>
+              • Total: ₹1,248 (COD)<br>
+              • Delivery: Lucknow, UP<br>
+              ✅ Send to: 917355415447
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews & Trust Section -->
+    <section class="container">
+      <div class="reviews-section">
+        <div class="section-header-compact">
+          <div class="section-heading-wrap">
+            <h3 class="section-title">What Our Customers Say</h3>
+            <span class="section-subtitle">Real experiences from shoppers across India</span>
+          </div>
+        </div>
+
+        <div class="reviews-grid" id="reviewsGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Subscription Section -->
+    <section class="container">
+      <div class="newsletter-strip">
+        <div class="container newsletter-inner">
+          <div class="newsletter-content">
+            <h3>Get ₹100 Off on Your First Order!</h3>
+            <p>Subscribe to A-Mart's VIP discount club for secret sales, festive alerts, and instant coupon codes.</p>
+          </div>
+
+          <form class="newsletter-form" id="newsletterForm" onsubmit="handleNewsletterSubmit(event)">
+            <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Enter your email address" required>
+            <button type="submit" class="newsletter-btn">Claim ₹100 Off</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Complete Retail Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-col-brand">
+          <a href="index.html" class="brand-logo" style="margin-bottom: 0.85rem;">
+            <div class="logo-icon-box" style="width: 40px; height: 40px; font-size: 1.35rem;">A</div>
+            <div class="logo-text-group">
+              <span class="logo-title" style="color: #ffffff;">A-<span>MART</span></span>
+              <span class="logo-tagline" style="color: #94a3b8;">Fashion for Everyone</span>
+            </div>
+          </a>
+          <p class="footer-brand-desc">
+            A-Mart is India's rapidly growing family fashion and lifestyle retail destination. We deliver the highest quality apparel, ethnic fashion, western wear, footwear, and accessories at honest, factory-direct prices.
+          </p>
+          <div class="footer-social-links">
+            <a href="javascript:void(0)" class="social-icon-circle" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="javascript:void(0)" class="social-icon-circle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="javascript:void(0)" class="social-icon-circle" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://wa.me/917355415447" target="_blank" class="social-icon-circle" style="background: var(--whatsapp-green);" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Categories Links -->
+        <div>
+          <h4 class="footer-heading">Shop Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="#catalog" onclick="filterByCategory('men')">Men's Fashion</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('women')">Women's Fashion</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('kids')">Kids Collection</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('ethnic-wear')">Ethnic Wear</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('western-wear')">Western Wear</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('footwear')">Footwear Store</a></li>
+            <li><a href="#catalog" onclick="filterByCategory('sale')">Mega Sale Deals</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Service & Policies -->
+        <div>
+          <h4 class="footer-heading">Customer Policies</h4>
+          <ul class="footer-links-list">
+            <li><a href="javascript:void(0)" onclick="openPolicyModal('returns')">7-Day Easy Return & Exchange</a></li>
+            <li><a href="javascript:void(0)" onclick="openPolicyModal('shipping')">Shipping & Delivery Info</a></li>
+            <li><a href="javascript:void(0)" onclick="openPolicyModal('privacy')">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="openPolicyModal('terms')">Terms & Conditions</a></li>
+            <li><a href="javascript:void(0)" onclick="openSizeGuideModal()">Size Measurement Guide</a></li>
+            <li><a href="javascript:void(0)" onclick="openPolicyModal('track')">Track Your Shipment</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & WhatsApp Details -->
+        <div>
+          <h4 class="footer-heading">Contact & Store</h4>
+          <div class="footer-contact-info">
+            <div class="contact-info-row">
+              <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green); font-size: 1.3rem;"></i>
+              <div>
+                <strong>WhatsApp Orders:</strong><br>
+                <a href="https://wa.me/917355415447" target="_blank" style="color: #ffffff; font-weight: 700;">+91 7355415447</a>
+              </div>
+            </div>
+
+            <div class="contact-info-row">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>Customer Helpline:</strong><br>
+                <span>+91 7355415447 (9 AM - 9 PM)</span>
+              </div>
+            </div>
+
+            <div class="contact-info-row">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <strong>Support Email:</strong><br>
+                <span>orders@amartfashion.in</span>
+              </div>
+            </div>
+
+            <div class="contact-info-row">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>Store Office:</strong><br>
+                <span>A-Mart Retail Plaza, Commercial Complex, Sector 18, Noida, UP - 201301</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>© 2026 A-MART Retail Limited. All rights reserved. "Fashion for Everyone" is a registered trademark of A-Mart.</p>
+          <div class="payment-badges-row">
+            <i class="fa-brands fa-google-pay" title="Google Pay"></i>
+            <i class="fa-brands fa-cc-visa" title="Visa"></i>
+            <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+            <span style="font-size: 0.8rem; font-weight: 800; background: #1f2937; padding: 2px 8px; border-radius: 4px; color: #ffffff;">UPI / COD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MODALS & SLIDE-OUT DRAWERS
+       ============================================================ -->
+
+  <!-- 1. Shopping Cart Slide-out Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="closeCartDrawer(event)">
+    <div class="cart-drawer" onclick="event.stopPropagation()">
+      
+      <!-- Drawer Header -->
+      <div class="cart-drawer-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-bag-shopping" style="color: var(--primary-red);"></i>
+          <span>Shopping Cart (<span id="cartDrawerCount">0</span>)</span>
+        </h3>
+        <button class="modal-close-btn" onclick="closeCartDrawer()" aria-label="Close Cart">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Free Shipping Meter -->
+      <div class="free-shipping-progress-box" id="freeShippingMeterBox">
+        <div id="freeShippingNotice">Add ₹999 more for FREE Delivery!</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="freeShippingBarFill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Scrollable Cart Items List -->
+      <div class="cart-items-scroll-area" id="cartItemsContainer">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Cart Drawer Footer -->
+      <div class="cart-drawer-footer" id="cartDrawerFooter">
+        
+        <!-- Coupon Code Box -->
+        <div class="cart-coupon-box">
+          <input type="text" class="coupon-input" id="cartCouponInput" placeholder="Enter Coupon (e.g. AMART100)">
+          <button class="apply-coupon-btn" onclick="applyCartCoupon()">Apply</button>
+        </div>
+        <div id="couponAppliedMsg" style="font-size: 0.78rem; font-weight: 600; display: none;"></div>
+
+        <!-- Price Breakdown -->
+        <div class="cart-price-summary-box">
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="cartSubtotalText">₹0</span>
+          </div>
+          <div class="summary-row" id="cartDiscountRow" style="display: none; color: var(--accent-green);">
+            <span>Coupon Discount:</span>
+            <span id="cartDiscountText">-₹0</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping:</span>
+            <span id="cartShippingText">₹49</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total Payable:</span>
+            <span id="cartGrandTotalText" style="color: var(--primary-red);">₹0</span>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <button class="checkout-wa-btn" onclick="openCheckoutModalFromCart()">
+          <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
+          <span>Proceed to WhatsApp Checkout</span>
+        </button>
+        
+        <button onclick="closeCartDrawer()" style="text-align: center; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); padding: 0.35rem;">
+          Continue Shopping
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 2. WhatsApp Checkout Modal (MOST IMPORTANT SYSTEM REQUIREMENT) -->
+  <div class="modal-overlay" id="checkoutModalOverlay" onclick="closeCheckoutModal(event)">
+    <div class="modal-container modal-lg" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp-green); font-size: 1.5rem;"></i>
+          <span>Complete Order via WhatsApp</span>
+        </h3>
+        <button class="modal-close-btn" onclick="closeCheckoutModal()" aria-label="Close Checkout">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- Notice Box adhering to instructions -->
+        <div class="wa-notice-box" style="margin-bottom: 1.25rem;">
+          <i class="fa-solid fa-circle-info"></i>
+          <div>
+            <strong>How A-Mart WhatsApp Checkout Works:</strong>
+            Fill in your delivery address below. When you click <strong>"Place Order via WhatsApp"</strong>, WhatsApp will open with your order summary pre-formatted for <strong>+91 7355415447</strong>. Please send the message so our store team can confirm your order and dispatch details!
+          </div>
+        </div>
+
+        <form class="checkout-modal-form" id="checkoutForm" onsubmit="handleCheckoutFormSubmit(event)">
+          
+          <!-- Customer Information -->
+          <div class="form-row-grid">
+            <div class="form-field-group">
+              <label class="form-label">Full Name <span class="req">*</span></label>
+              <input type="text" class="form-input" id="custName" placeholder="e.g. Rahul Sharma" required>
+            </div>
+            
+            <div class="form-field-group">
+              <label class="form-label">WhatsApp Mobile Number <span class="req">*</span></label>
+              <input type="tel" class="form-input" id="custMobile" placeholder="10-digit number (e.g. 9876543210)" pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+          </div>
+
+          <!-- Delivery Address -->
+          <div class="form-field-group">
+            <label class="form-label">Full Delivery Address (House No., Building, Street, Landmark) <span class="req">*</span></label>
+            <textarea class="form-textarea" id="custAddress" rows="2" placeholder="e.g. Flat 302, Sunrise Heights, Near Apollo Hospital" required></textarea>
+          </div>
+
+          <div class="form-row-grid">
+            <div class="form-field-group">
+              <label class="form-label">City <span class="req">*</span></label>
+              <input type="text" class="form-input" id="custCity" placeholder="e.g. Lucknow / Delhi / Kanpur" required>
+            </div>
+
+            <div class="form-field-group">
+              <label class="form-label">State <span class="req">*</span></label>
+              <select class="form-select" id="custState" required>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Delhi">Delhi NCR</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Punjab">Punjab</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Other">Other State</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row-grid">
+            <div class="form-field-group">
+              <label class="form-label">PIN Code <span class="req">*</span></label>
+              <input type="text" class="form-input" id="custPincode" placeholder="6-digit PIN (e.g. 226001)" pattern="[0-9]{6}" maxlength="6" required>
+            </div>
+
+            <div class="form-field-group">
+              <label class="form-label">Delivery Instructions / Notes (Optional)</label>
+              <input type="text" class="form-input" id="custNotes" placeholder="e.g. Call before delivery / Leave at gate">
+            </div>
+          </div>
+
+          <!-- Payment Method Preference -->
+          <div class="form-field-group">
+            <label class="form-label">Preferred Payment Method <span class="req">*</span></label>
+            <div class="payment-method-radios">
+              <label class="payment-radio-card active" id="payRadioCod" onclick="selectPaymentMethod('Cash on Delivery (COD)')">
+                <input type="radio" name="payMethod" value="Cash on Delivery (COD)" checked style="accent-color: var(--primary-red);">
+                <div>
+                  <div><strong>Cash on Delivery (COD)</strong></div>
+                  <small style="color: var(--text-muted);">Pay in cash when received</small>
+                </div>
+              </label>
+
+              <label class="payment-radio-card" id="payRadioUpi" onclick="selectPaymentMethod('UPI / GPay / PhonePe / Paytm')">
+                <input type="radio" name="payMethod" value="UPI / GPay / PhonePe / Paytm" style="accent-color: var(--primary-red);">
+                <div>
+                  <div><strong>UPI / Online Payment</strong></div>
+                  <small style="color: var(--text-muted);">Pay via QR / Link on WhatsApp</small>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Order Summary Card -->
+          <div class="order-review-summary-card">
+            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.6rem; color: var(--secondary-black);">
+              Items In This Order:
+            </div>
+            
+            <div class="order-items-mini-list" id="checkoutItemsList">
+              <!-- Injected by JS -->
+            </div>
+
+            <div style="border-top: 1px dashed var(--border-medium); padding-top: 0.6rem; display: flex; justify-content: space-between; font-weight: 800; font-size: 1.1rem;">
+              <span>Total Order Amount:</span>
+              <span id="checkoutTotalAmountText" style="color: var(--primary-red);">₹0</span>
+            </div>
+          </div>
+
+          <!-- Big Submit Button -->
+          <button type="submit" class="checkout-wa-btn" style="padding: 1rem; font-size: 1.05rem;">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.5rem;"></i>
+            <span>Send Order via WhatsApp to 7355415447</span>
+          </button>
+          
+          <div style="text-align: center; font-size: 0.78rem; color: var(--text-muted);">
+            🔒 Your contact details are securely sent directly to A-Mart's official business WhatsApp.
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Product Details Modal -->
+  <div class="modal-overlay" id="productModalOverlay" onclick="closeProductModal(event)">
+    <div class="modal-container modal-lg" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <span class="pmodal-category-tag" id="pmodalCatBreadcrumb" style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">A-MART RETAIL</span>
+        <button class="modal-close-btn" onclick="closeProductModal()" aria-label="Close details">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" id="productModalContent">
+        <!-- Rendered dynamically by openProductDetailsModal(productId) -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Wishlist Slide Drawer / Modal -->
+  <div class="modal-overlay" id="wishlistModalOverlay" onclick="closeWishlistDrawer(event)">
+    <div class="modal-container" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-heart" style="color: var(--primary-red);"></i>
+          <span>My Wishlist (<span id="wishlistModalCount">0</span>)</span>
+        </h3>
+        <button class="modal-close-btn" onclick="closeWishlistDrawer()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div id="wishlistItemsList" style="display: flex; flex-direction: column; gap: 1rem;">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. User Authentication / Login Modal -->
+  <div class="modal-overlay" id="authModalOverlay" onclick="closeAuthModal(event)">
+    <div class="modal-container" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-regular fa-user" style="color: var(--primary-red);"></i>
+          <span>Sign In to A-MART</span>
+        </h3>
+        <button class="modal-close-btn" onclick="closeAuthModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <div class="logo-icon-box" style="margin: 0 auto 0.5rem; width: 44px; height: 44px;">A</div>
+          <h4 style="font-size: 1.2rem; font-weight: 800;">Welcome to A-Mart</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Enter your details to track orders, save wishlists, and unlock member discounts.</p>
+        </div>
+
+        <form onsubmit="handleAuthSubmit(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div class="form-field-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" id="authNameInput" placeholder="Rahul Sharma" value="Rahul Sharma" required>
+          </div>
+
+          <div class="form-field-group">
+            <label class="form-label">Mobile Number</label>
+            <input type="tel" class="form-input" id="authMobileInput" placeholder="10-digit mobile" value="9876543210" pattern="[0-9]{10}" required>
+          </div>
+
+          <button type="submit" class="hero-cta-btn" style="width: 100%; justify-content: center; padding: 0.85rem;">
+            Sign In / Continue
+          </button>
+
+          <button type="button" onclick="demoLogin()" style="background: var(--bg-light); border: 1px solid var(--border-medium); padding: 0.75rem; border-radius: var(--radius-md); font-weight: 700; font-size: 0.85rem; color: var(--secondary-dark);">
+            <i class="fa-solid fa-bolt" style="color: var(--accent-gold);"></i> One-Click Demo Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Size Guide Measurement Modal -->
+  <div class="modal-overlay" id="sizeGuideModalOverlay" onclick="closeSizeGuideModal(event)">
+    <div class="modal-container modal-lg" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-ruler-combined" style="color: var(--primary-red);"></i> A-MART Size Measurement Guide</h3>
+        <button class="modal-close-btn" onclick="closeSizeGuideModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          All measurements are shown in inches. For a relaxed fit, we suggest choosing one size up.
+        </p>
+        
+        <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-red);">Men's Shirts & T-Shirts (Inches)</h4>
+        <table class="pmodal-spec-table" style="margin-bottom: 1.5rem;">
+          <thead>
+            <tr style="background: var(--bg-light); font-weight: 800;">
+              <td>Size</td><td>Chest</td><td>Shoulder</td><td>Length</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S</td><td>38"</td><td>17.0"</td><td>27.5"</td></tr>
+            <tr><td>M</td><td>40"</td><td>17.5"</td><td>28.5"</td></tr>
+            <tr><td>L</td><td>42"</td><td>18.0"</td><td>29.5"</td></tr>
+            <tr><td>XL</td><td>44"</td><td>18.5"</td><td>30.5"</td></tr>
+            <tr><td>XXL</td><td>46"</td><td>19.0"</td><td>31.5"</td></tr>
+          </tbody>
+        </table>
+
+        <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary-red);">Women's Kurtas & Dresses (Inches)</h4>
+        <table class="pmodal-spec-table">
+          <thead>
+            <tr style="background: var(--bg-light); font-weight: 800;">
+              <td>Size</td><td>Bust</td><td>Waist</td><td>Hip</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S</td><td>36"</td><td>32"</td><td>38"</td></tr>
+            <tr><td>M</td><td>38"</td><td>34"</td><td>40"</td></tr>
+            <tr><td>L</td><td>40"</td><td>36"</td><td>42"</td></tr>
+            <tr><td>XL</td><td>42"</td><td>38"</td><td>44"</td></tr>
+            <tr><td>XXL</td><td>44"</td><td>40"</td><td>46"</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Information & Policy Modals (Returns, Privacy, Terms, Track) -->
+  <div class="modal-overlay" id="policyModalOverlay" onclick="closePolicyModal(event)">
+    <div class="modal-container modal-lg" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 class="modal-title" id="policyModalTitle">Store Information</h3>
+        <button class="modal-close-btn" onclick="closePolicyModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="policyModalBody" style="line-height: 1.6; font-size: 0.92rem; color: var(--secondary-charcoal);">
+        <!-- Injected by openPolicyModal() -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Order Sent WhatsApp Confirmation Notice Modal -->
+  <div class="modal-overlay" id="orderConfirmModalOverlay" onclick="closeOrderConfirmModal(event)">
+    <div class="modal-container" onclick="event.stopPropagation()">
+      <div class="modal-body" style="text-align: center; padding: 2.5rem 1.5rem;">
+        <div style="width: 72px; height: 72px; border-radius: var(--radius-full); background: #ecfdf5; color: var(--whatsapp-green); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1.25rem;">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <h3 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.6rem;">Order Details Prepared!</h3>
+        <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem;">
+          WhatsApp has been opened with your order summary addressed to A-Mart (+91 7355415447).
+        </p>
+        
+        <div style="background: var(--bg-light); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; text-align: left;">
+          <div style="font-weight: 700; margin-bottom: 0.35rem; color: var(--secondary-black);">
+            ⚠️ Please Note:
+          </div>
+          <div>Make sure you hit the <strong>"Send"</strong> button inside WhatsApp. Your order will be confirmed once our store team verifies stock availability and shares delivery confirmation with you!</div>
+        </div>
+
+        <button class="hero-cta-btn" onclick="closeOrderConfirmModal()" style="width: 100%; justify-content: center;">
+          Got It, Continue Shopping
+        </button>
+      </div>
+    </div>
+  <!-- 9. Mobile Navigation Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileDrawer(event)">
+    <div class="mobile-drawer" onclick="event.stopPropagation()">
+      <div class="mobile-drawer-header">
+        <a href="index.html" class="brand-logo" onclick="closeMobileDrawer()">
+          <div class="logo-icon-box" style="width: 36px; height: 36px; font-size: 1.2rem;">A</div>
+          <div class="logo-text-group">
+            <span class="logo-title" style="font-size: 1.3rem;">A-<span>MART</span></span>
+            <span class="logo-tagline" style="font-size: 0.62rem;">Fashion for Everyone</span>
+          </div>
+        </a>
+        <button class="modal-close-btn" onclick="closeMobileDrawer()" aria-label="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Quick Search inside drawer -->
+      <div style="padding: 1rem 1.25rem 0.5rem;">
+        <div class="search-input-box">
+          <i class="fa-solid fa-magnifying-glass" style="color: #94a3b8;"></i>
+          <input type="text" id="drawerSearchInput" placeholder="Search fashion...">
+        </div>
+      </div>
+
+      <!-- Categories list inside mobile drawer -->
+      <div class="mobile-drawer-categories-list">
+        <div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; letter-spacing: 1px;">
+          All Categories
+        </div>
+        <ul id="mobileDrawerCategoryList">
+          <!-- Populated by JS -->
+        </ul>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="mobile-drawer-footer">
+        <a href="https://wa.me/917355415447?text=Hello%20A-Mart!%20I%20need%20help%20with%20an%20order." target="_blank" class="checkout-wa-btn" style="padding: 0.65rem 1rem; font-size: 0.88rem;">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>WhatsApp Helpline: 7355415447</span>
+        </a>
+        <div style="display: flex; justify-content: space-between; margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted);">
+          <a href="javascript:void(0)" onclick="closeMobileDrawer(); openAuthModal();"><i class="fa-regular fa-user"></i> Sign In / Account</a>
+          <a href="javascript:void(0)" onclick="closeMobileDrawer(); openPolicyModal('returns');"><i class="fa-solid fa-rotate-left"></i> 7-Day Exchange</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Quick Connect Button -->
+  <a href="https://wa.me/917355415447?text=Hi%20A-Mart%20Team!%20I%20need%20assistance%20with%20shopping." target="_blank" class="floating-whatsapp-btn" aria-label="Chat with A-Mart on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-bar" aria-label="Mobile Bottom Navigation">
+    <div class="mobile-bottom-nav">
+      <a href="index.html" class="mobile-nav-item active">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      
+      <a href="#catalog" class="mobile-nav-item" onclick="filterByCategory('all')">
+        <i class="fa-solid fa-border-all"></i>
+        <span>Shop</span>
+      </a>
+
+      <button class="mobile-nav-item" onclick="openWishlistDrawer()">
+        <i class="fa-regular fa-heart"></i>
+        <span class="badge-count" id="mobileWishlistCount">0</span>
+        <span>Wishlist</span>
+      </button>
+
+      <button class="mobile-nav-item" onclick="openCartDrawer()">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge-count" id="mobileCartCount">0</span>
+        <span>Cart</span>
+      </button>
+
+      <a href="https://wa.me/917355415447?text=Hello%20A-Mart%2C%20I%20want%20to%20order." target="_blank" class="mobile-nav-item" style="color: var(--whatsapp-dark);">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Floating Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JavaScript Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
